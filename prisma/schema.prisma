@@ -28,6 +28,13 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
+model Stream {
+  id String @id @default(uuid())
+  name String @db.Text
+  thumbnailUrl String? @db.Text
+  ingressId String? @unique
+}
+
 model Follow {
   id String @id @default(uuid())
   followerId String
