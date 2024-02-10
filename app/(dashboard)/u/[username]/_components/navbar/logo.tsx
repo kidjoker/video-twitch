@@ -28,7 +28,7 @@ export const Logo = () => {
             TwitchMock
           </p>
           <p className="text-xs text-muted-foreground">
-            Let&apos;s play
+            Creator dashboard
           </p>
         </div>
       </div>
