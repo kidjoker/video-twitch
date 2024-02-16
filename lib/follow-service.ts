@@ -19,7 +19,11 @@ export const getFollowingUsers = async () => {
       include: {
         following: {
           include: {
-            stream: true,
+            stream: {
+              select: {
+                isLive: true,
+              },
+            },
           },
         },
       },
