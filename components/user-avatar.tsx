@@ -8,7 +8,7 @@ const avatarSizes = cva("", {
   variants: {
     size: {
       default: "h-8 w-8",
-      lg: "w-14 w-14",
+      lg: "h-14 w-14",
     },
   },
   defaultVariants: {
@@ -41,10 +41,10 @@ export const UserAvatar = ({
         )}
       >
         <AvatarImage src={imageUrl} className="object-cover" />
-        {/* <AvatarFallback>
+        <AvatarFallback>
           {username[0]}
           {username[username.length - 1]}
-        </AvatarFallback> */}
+        </AvatarFallback>
       </Avatar>
       {canShowBadge && (
         <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
