@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { Chat, ChatSkeleton } from "./chat";
 import { ChatToggle } from "./chat-toggle";
 import { Header, HeaderSkeleton } from "./header";
+import { Info } from "./info";
 
 interface StreamPlayerProps {
   user: User & { stream: Stream | null };
@@ -51,6 +52,12 @@ export const StreamPlayer = ({ user, isFollowing }: StreamPlayerProps) => {
             imageUrl={user.imageUrl}
             isFollowing={isFollowing}
             name={user.stream.name}
+          />
+          <Info
+            hostIdentity={user.id}
+            viewerIdentity={identity}
+            name={user.stream.name}
+            thumbnailUrl={user.stream.thumbnailUrl}
           />
         </div>
         <div className={cn("col-span-1", collapsed && "hidden")}>
