@@ -14,15 +14,32 @@ import { Header, HeaderSkeleton } from "./header";
 import { Info } from "./info";
 import { AboutCard } from "./about-card";
 
+type CustomStream = {
+  is: string;
+  isLive: boolean;
+  isChatEnabled: boolean;
+  isChatDelayed: boolean;
+  isChatFollowersOnly: boolean;
+  thumbnailUrl: string;
+  name: string;
+};
+
+type CustomUser = {
+  id: string;
+  username: string;
+  bio: string;
+  imageUrl: string;
+  externalUserId: string;
+  _count: { followedBy: number };
+};
+
 interface StreamPlayerProps {
-  user: User & { 
-    stream: Stream | null,
-    _count: { followedBy : number}
-  };
+  user: CustomUser;
+  stream: CustomStream;
   isFollowing: boolean;
 }
 
-export const StreamPlayer = ({ user, isFollowing }: StreamPlayerProps) => {
+export const StreamPlayer = ({ user, stream, isFollowing }: StreamPlayerProps) => {
   const { token, name, identity } = userViewerToken(user.id);
 
   const { collapsed } = useChatSidebar((state) => state);
@@ -55,13 +72,13 @@ export const StreamPlayer = ({ user, isFollowing }: StreamPlayerProps) => {
             viewerIdentity={identity}
             imageUrl={user.imageUrl}
             isFollowing={isFollowing}
-            name={user.stream.name}
+            name={stream.name}
           />
           <Info
             hostIdentity={user.id}
             viewerIdentity={identity}
-            name={user.stream.name}
-            thumbnailUrl={user.stream.thumbnailUrl}
+            name={stream.name}
+            thumbnailUrl={stream.thumbnailUrl}
           />
           <AboutCard
             hostName={user.username}
@@ -77,9 +94,9 @@ export const StreamPlayer = ({ user, isFollowing }: StreamPlayerProps) => {
             hostName={user.username}
             hostIdentity={user.id}
             isFollowing={isFollowing}
-            isChatEnable={user.stream.isChatEnabled}
-            isChatDelayed={user.stream.isChatDelayed}
-            isChatFollowersOnly={user.stream.isChatFollowersOnly}
+            isChatEnable={stream.isChatEnabled}
+            isChatDelayed={stream.isChatDelayed}
+            isChatFollowersOnly={stream.isChatFollowersOnly}
           />
         </div>
       </LiveKitRoom>
