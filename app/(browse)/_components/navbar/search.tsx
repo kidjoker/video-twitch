@@ -19,7 +19,7 @@ export const Search = () => {
 
     const url = queryString.stringifyUrl(
       {
-        url: "/",
+        url: "/search",
         query: {
           term: value,
         },

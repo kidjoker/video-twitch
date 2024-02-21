@@ -15,7 +15,7 @@ import { Info } from "./info";
 import { AboutCard } from "./about-card";
 
 type CustomStream = {
-  is: string;
+  id: string;
   isLive: boolean;
   isChatEnabled: boolean;
   isChatDelayed: boolean;
